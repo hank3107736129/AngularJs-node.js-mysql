@@ -1,0 +1,67 @@
+
+<div>
+<div class="w3-container">
+
+<h3>Users</h3>
+
+
+ 
+<form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search users" ng-model="searchUser">
+      </div>      
+    </div>
+  </form>
+<table class="w3-table w3-bordered w3-striped">
+  <tr>
+    <th>Edit</th>
+    <th>Delete</th>
+    <th> <a  ng-click="sortType = 'fName'; sortReverse = !sortReverse">
+    First Name
+     
+    </a></th>
+    <th>
+     <a  ng-click="sortType = 'lName'; sortReverse = !sortReverse">
+    Last Name
+    </a></th>
+     <th>
+      <a ng-click="sortType = 'title'; sortReverse = !sortReverse">
+     Tittle</a></th>
+     <th>
+      <a ng-click="sortType = 'sex'; sortReverse = !sortReverse">
+     Sex</a></th>
+     <th>
+       <a ng-click="sortType = 'age'; sortReverse = !sortReverse">
+     Age</a></th>
+
+  </tr>
+
+  <tr ng-repeat="user in users |orderBy:sortType:sortReverse |
+  filter:searchUser " >
+    <td>
+      <a href="#/edit/{{user.id}}"><button class="w3-btn w3-ripple" >&#9998; Edit</button></a>
+    </td>
+    <td>
+      <button class="w3-btn w3-ripple" ng-click="deleteUser(user.id)">&#9998; Delete</button>
+    </td>
+    <td>{{ user.fName }}</td>
+    <td>{{ user.lName }}</td>
+    <td>{{ user.title }}</td>
+    <td>{{ user.sex }}</td>
+    <td>{{ user.age }}</td>
+
+  </tr>
+</table>
+<br>
+<a href="#/create/{{id+1}}"><button class="w3-btn w3-green w3-ripple" ng-click="editUser()">&#9998; Create New User</button>
+</a>
+</div>
+
+
+
+</div>
+
+
+
